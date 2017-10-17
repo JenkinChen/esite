@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from zinnia.urls import archives
 
 urlpatterns = [
+    url(r'^$', archives.EntryIndex.as_view,
+        name='entry_archive_index'),
     url(r'^admin/', admin.site.urls),
     url(r'^weblog/', include('zinnia.urls')),
     url(r'^comments/', include('django_comments.urls')),
